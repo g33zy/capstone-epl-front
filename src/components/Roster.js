@@ -41,7 +41,7 @@ function Roster() {
   
       const getRoster = async () => {
         
-        await axios.get(`http://localhost:4001/players/playerpool/:id`,
+        await axios.get(`https://capstone-epl.onrender.com/players/playerpool/:id`,
         {
           headers: {
             Authorization: `Bearer ${cookies.token}`
@@ -67,7 +67,7 @@ function Roster() {
       
 
     const removePlayer = async (id) => {
-        await axios.delete(`http://localhost:4001/players/playerpool/${id}`,
+        await axios.delete(`https://capstone-epl.onrender.com/players/playerpool/${id}`,
         {
             headers: {
               Authorization: `Bearer ${cookies.token}`

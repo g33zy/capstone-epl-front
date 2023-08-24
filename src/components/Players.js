@@ -46,7 +46,7 @@ const removePlayer = (index) => {
     const [playersLocal, setPlayersLocal] = useState([])
 
     const getPlayersLocal = async () => {
-        await axios.get('http://localhost:4001/players')
+        await axios.get('https://capstone-epl.onrender.com/players')
         .then((response) => {
             console.log(response.data)
             setPlayersLocal(response.data)

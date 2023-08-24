@@ -22,7 +22,7 @@ function Login(props) {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    axios.post("http://localhost:4001/auth/login", {
+    axios.post("https://capstone-epl.onrender.com/auth/login", {
       email: state.email,
       password: state.password,
     })

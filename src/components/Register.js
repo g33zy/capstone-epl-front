@@ -24,7 +24,7 @@ function Register() {
   const handleRegister = (e) => {
     e.preventDefault();
 
-    axios.post(`http://localhost:4001/auth/register`, {
+    axios.post(`https://capstone-epl.onrender.com/auth/register`, {
     // axios.post(`/auth/register`, {
       userName: state.username,
       teamName: state.teamname,

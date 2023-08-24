@@ -37,7 +37,7 @@ const Dashboard = () => {
 
 const getLeaderboard = async () => {
   try {
-  const response = await axios.get('http://localhost:4001/players/dashboard')
+  const response = await axios.get('https://capstone-epl.onrender.com/players/dashboard')
   console.log('Fetched data:', response.data);
       setLeaderboard(response.data);
   } catch (error) {

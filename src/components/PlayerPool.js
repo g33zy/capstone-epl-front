@@ -50,7 +50,7 @@ function PlayerPool() {
 
   const fetchCurrentPlayerpool = async () => {
         
-    await axios.get(`http://localhost:4001/players/playerpool/:id`,
+    await axios.get(`https://capstone-epl.onrender.com/players/playerpool/:id`,
     {
       headers: {
         Authorization: `Bearer ${cookies.token}`
@@ -108,7 +108,7 @@ function PlayerPool() {
 
   const getAllPlayerPool = async () => {
     await axios
-      .get("http://localhost:4001/players/playerpool")
+      .get("https://capstone-epl.onrender.com/players/playerpool")
       .then((response) => setPlayerPool(response.data));
   };
 
@@ -156,7 +156,7 @@ function PlayerPool() {
         console.log(rosterCount)
       axios
         .post(
-          "http://localhost:4001/players/playerpool",
+          "https://capstone-epl.onrender.com/players/playerpool",
           {
             firstName: player.player.firstname,
             lastName: player.player.lastname,
