@@ -1,4 +1,60 @@
-.App {
+
+/* .nav li {
+  display: inline-block;
+} */
+
+/* .nav li {
+  display: inline;
+} */
+
+
+.growing { transition: all .2s ease-in-out; }
+
+.growing:hover { transform : scale(1.1); }
+
+
+
+
+/* @media (min-width: 600px) {
+
+  .li {
+    font-size: small;
+  }
+}
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +91,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
