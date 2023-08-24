@@ -24,7 +24,8 @@ function Register() {
   const handleRegister = (e) => {
     e.preventDefault();
 
-    axios.post(`http://localhost:/auth/register`, {
+    axios.post(`http://localhost:4001/auth/register`, {
+    // axios.post(`/auth/register`, {
       userName: state.username,
       teamName: state.teamname,
       email: state.email,
@@ -76,7 +77,7 @@ function Register() {
             variant="contained"
             color="primary"
           >
-            Login
+            Register
           </Button>
         </form>
       </Container>
