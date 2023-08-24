@@ -26,12 +26,12 @@ function Home() {
   <div style={{
     backgroundImage: `url("https://images2.minutemediacdn.com/image/upload/c_fill,w_1080,ar_16:9,f_auto,q_auto,g_auto/shape%2Fcover%2Fsport%2FOlympics-Day-13---Womens-Football-Final---Match-26-060f348ddd44138e75240cae926af05f.jpg")`,
     // backgroundImage: `url("https://img.freepik.com/premium-photo/green-soccer-field-football-field-top-view-with-realistic-grass-texture-realistic-football-pitch_167120-261.jpg")`,
-    backgroundPosition: "center center", backgroundRepeat: "no-repeat", backgroundAttachment: 'fixed', backgroundSize: 'cover', height: '100vh'
+    backgroundPosition: "center center", backgroundRepeat: "no-repeat", backgroundAttachment: 'fixed', backgroundSize: 'cover', height: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center'
   }}>
     
-    <h2 style={{color: 'red', margin: '0', textAlign: 'center' }}>Welcome to EPL Top 20!</h2>
-      
-      <h3 style={{color: 'red',}}>Rules: </h3>
+    <h2 style={{color: 'red', margin: '0', textAlign: 'center', padding: 0 }}>Welcome to EPL Top 20!</h2>
+      <div style={{backgroundColor: 'white', width: 'fit-content', padding: '1rem', opacity: '.8'}}>
+      <h3 style={{color: 'red', margin: '2rem'}}>Rules: </h3>
         <ol style={{color: 'red'}}>
           <li>Provide user name, team name, email, and password to register.</li>
           <li>This game uses the top 20 scorers in the English Premier Leage.</li>
@@ -40,7 +40,8 @@ function Home() {
           <li>The limit on number of players you can have in your roster is 6.</li>
           <li>Stats are weighted as such: Goals = 4 points, Assists = 2 points, Key Passes = 1 point, and Tackles = 1 point.</li>
           <li>Go to the Dashboard to see the score leaders!</li>
-        </ol>
+        </ol> 
+        </div>
   </div>
 
   

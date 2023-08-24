@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import cookie from 'cookie'
 import { useState, useEffect } from 'react'
-import { useParams } from "react-router-dom"
+// import { useParams } from "react-router-dom"
 
 import {
   Container,
@@ -11,7 +11,7 @@ import {
   TableCell,
   TableHead,
   TableRow,
-  Chip
+//   Chip
 } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete'
 // import AddIcon from '@mui/icons-material/Add'
@@ -109,7 +109,7 @@ function Roster() {
             {/* {Object.keys(roster).map((key, idx) => {
                 return <Chip key={idx} label={`${key}: ${roster[key]}`}></Chip>
             })} */}
-              {cookies.loggedIn ? <h4>Welcome, {jwtd.team_name} to your roster.</h4> : null}
+              {cookies.loggedIn ? <h4>Welcome, {jwtd.team_name} to your Roster.</h4> : null}
   
               <div className="flex-container">
                   {/* <Chart /> */}

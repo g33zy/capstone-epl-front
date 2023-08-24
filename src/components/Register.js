@@ -35,9 +35,9 @@ function Register() {
   };
 
   return (
-    <div className="App">
+    <div  style={{minHeight: '70vh', display: 'flex', justifyContent: 'center', alignItems: 'center'}} className="App">
       <Container maxWidth="sm">
-        <form className="register-form" onSubmit={handleRegister}>
+        <form style={{display: 'flex', flexDirection: 'column', gap: '1rem'}} className="register-form" onSubmit={handleRegister}>
           <TextField
             required
             onChange={handleChange}

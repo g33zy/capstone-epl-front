@@ -1,12 +1,12 @@
-import React from "react";
+// import React from "react";
 
-function League() {
-  return (
-    <div>League page where you can be if not logged in to see information</div>
-  )
-}
+// function League() {
+//   return (
+//     <div>League page where you can be if not logged in to see information</div>
+//   )
+// }
 
-export default League;
+// export default League;
 
 
 

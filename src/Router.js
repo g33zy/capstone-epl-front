@@ -43,7 +43,7 @@ const Router = () => {
             <Route path="/" element={<Home/>} />
             <Route path="/login" element={<Login/>} />
             <Route path="/register" element={<Register/>} />
-            <Route path="/test" element={<Test/>} />
+            {/* <Route path="/test" element={<Test/>} /> */}
             {/* <Route path="/playerpool" element={<PlayerPool/>} /> */}
             {/* <Route path="/roster/:id" element={<ProtectedRoute component={Roster} /> } /> */}
             <Route path="/dashboard" element={<ProtectedRoute component={Dashboard} /> } />
@@ -52,8 +52,8 @@ const Router = () => {
             <Route path="/roster" element={<ProtectedRoute component={Roster} /> } />
             {/* <Route path="/search" element={<Search/>} /> */}
             {/* <Route path="/roster" element={<Roster/>} /> */}
-             <Route path="/parent" element={<Parent/>} />
-             <Route path="/league" element={<League/>} />
+             {/* <Route path="/parent" element={<Parent/>} /> */}
+             {/* <Route path="/league" element={<League/>} /> */}
 
             
             

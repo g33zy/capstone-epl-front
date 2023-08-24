@@ -42,9 +42,9 @@ function Login(props) {
   };
 
   return (
-    <div className="App">
-      <Container maxWidth="sm">
-        <form className="login-form" onSubmit={handleLogin}>
+    <div className="App" style={{minHeight: '70vh', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+      <Container  maxWidth="sm" >
+        <form style={{display: 'flex', flexDirection: 'column', gap: '1rem'}} className="login-form" onSubmit={handleLogin}>
           <TextField
             required
             onChange={handleChange}
