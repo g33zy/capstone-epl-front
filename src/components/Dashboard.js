@@ -140,7 +140,7 @@ console.log(leaderboard)
 
   return (
 
-    <div>{cookies.loggedIn ? <h4> Welcome, {jwtd.user_name} To EPL Dashboard! </h4> : null}
+    <div>{cookies.loggedIn ? <h4 style={{marginLeft: '2rem'}}> Welcome, {jwtd.user_name} To EPL Dashboard! </h4> : null}
     
     
 

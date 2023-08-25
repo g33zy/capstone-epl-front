@@ -15,15 +15,16 @@ export default function Footer() {
           theme.palette.mode === "light"
             ? theme.palette.grey[200]
             : theme.palette.grey[800],
-        p: 6,
+        p: 3,
         display: 'flex',
         flexDirection: 'column',
         minHeight: '100px'
 
+
       }}
     >
       <Container maxWidth="lg">
-        <Grid container spacing={5}>
+        <Grid container spacing={2}>
           <Grid item xs={12} sm={4}>
             <Typography variant="h6" color="text.primary" gutterBottom>
               About Us
@@ -51,6 +52,7 @@ export default function Footer() {
             <Typography variant="h6" color="text.primary" gutterBottom>
               Follow Us
             </Typography>
+            <Box sx={{ display: 'flex', gap: 1 }}> 
             <Link href="https://www.facebook.com/" color="inherit">
               <Facebook />
             </Link>
@@ -64,6 +66,7 @@ export default function Footer() {
             <Link href="https://www.twitter.com/" color="inherit">
               <Twitter />
             </Link>
+            </Box>
           </Grid>
         </Grid>
         <Box mt={5}>

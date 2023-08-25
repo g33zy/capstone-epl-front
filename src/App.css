@@ -12,16 +12,44 @@
 
 .growing:hover { transform : scale(1.1); }
 
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+  gap: 20px;
+   
+}
+
+/* .register-button { */
+
+  /* background-color: red;
+  color: white;
+} */
+
+.register-button:hover {
+ 
+  color: lightskyblue;
+}
 
 
 
-/* @media (min-width: 600px) {
 
-  .li {
-    font-size: small;
+@media (max-width: 600px) {
+  /* Adjust the styles for smaller screens */
+  div {
+    /* Example styles for responsiveness */
+    padding: 0.5rem;
+    width: 100%;
+  }
+
+  .register-button {
+    margin-top: 1rem;
   }
 }
- */
+
+
+
+
+
 
 
 

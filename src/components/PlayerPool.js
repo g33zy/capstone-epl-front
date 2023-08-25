@@ -5,6 +5,7 @@ import {
   CardMedia,
   Button,
   Typography,
+  Collapse
   // Checkbox,
   // FavoriteBorder,
   // Favorite,
@@ -47,6 +48,17 @@ function PlayerPool() {
   const [active, setActive] = useState({});
 
   const [rosterCount, setRosterCount] = useState(0);
+
+  const [expandedPlayerIndex, setExpandedPlayerIndex] = useState(null);
+
+  const handleExpandClick = (index) => {
+    if (expandedPlayerIndex === index) {
+      setExpandedPlayerIndex(null);
+    } else {
+      setExpandedPlayerIndex(index);
+    }
+  };
+
 
   const fetchCurrentPlayerpool = async () => {
         
@@ -188,10 +200,10 @@ function PlayerPool() {
   console.log(isLiked);
 
   return (
-    <div>
-      {players.map((player) => (
+    <div className="grid-container">
+      {players.map((player, index) => (
         <ul key={player.player.id}>
-          <Card sx={{ maxWidth: 200 }}>
+          <Card sx={{ maxWidth: 200, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
             <CardMedia
               className="growing"
               sx={{ width: "200px", height: "200px" }}
@@ -225,11 +237,16 @@ function PlayerPool() {
             </CardContent>
             <CardActions>
               {/* <Link to="/components/roster" class='roster' size="small">Share</Link> */}
-              <Button size="small">Learn More</Button>
+              <Button size="small" onClick={() => handleExpandClick(index)}
+              aria-expanded={expandedPlayerIndex === index}
+              aria-label="show more"
+              >
+                More Info
+                </Button>
               {/* <i onClick={claimPlayer()} className={props.isClicked && props.active.id === props.id ? "fa-solid fa-heart" : "fa-regular fa-heart"}></i> */}
               {/* <Button onClick={() => setIsClicked((prevState) => !prevState )} size="small">Claim: {claimPlayer ? </Button> */}
               <Button
-                size="small"
+                size="small" className="growing"
                 onClick={() => {
                   // if (rosterCount < 6) {
                     if (
@@ -260,6 +277,35 @@ function PlayerPool() {
                 {/* <Heart />  */}
               </Button>
             </CardActions>
+            <Collapse 
+            in={expandedPlayerIndex === index}
+            timeout='auto'
+            unmountOnExit
+            >
+              <CardContent>
+                <Typography>
+                  Nationality: {player.player.nationality}
+                </Typography>
+                <Typography>
+                  Age: {player.player.age}
+                </Typography>
+                <Typography>
+                  height: {player.player.height}
+                </Typography>
+                <Typography>
+                  Injured: {player.player.injured ? "Yes" : "No"}
+                </Typography>
+                <Typography>
+                  Team: {player.statistics[0].team.name}
+                </Typography>
+                <Typography>
+                  Shots on Target: {player.statistics[0].shots.on}
+                </Typography>
+                <Typography>
+                  Duels Won: {player.statistics[0].duels.won}
+                </Typography>
+              </CardContent>
+            </Collapse>
           </Card>
         </ul>
       ))}
