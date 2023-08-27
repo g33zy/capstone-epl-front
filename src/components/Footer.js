@@ -15,6 +15,7 @@ export default function Footer() {
           theme.palette.mode === "light"
             ? theme.palette.grey[200]
             : theme.palette.grey[800],
+            // backgroundColor: 'rgb(192, 192, 192)',
         p: 3,
         display: 'flex',
         flexDirection: 'column',

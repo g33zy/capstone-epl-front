@@ -414,26 +414,26 @@ const Navigation = () => {
       </Toolbar>
       <Drawer anchor="top" open={isDrawerOpen} onClose={toggleDrawer}>
         <List>
-          <ListItem button component={Link} to="/">
+          <ListItem component={Link} to="/">
             <ListItemText primary="Home" />
           </ListItem>
-          <ListItem button component={Link} to="/dashboard">
+          <ListItem component={Link} to="/dashboard">
             <ListItemText primary="Dashboard" />
           </ListItem>
-          <ListItem button component={Link} to="/playerpool">
+          <ListItem component={Link} to="/playerpool">
             <ListItemText primary="Player Pool" />
           </ListItem>
-          <ListItem button component={Link} to="/roster">
+          <ListItem component={Link} to="/roster">
             <ListItemText primary="Roster" />
           </ListItem>
           {!cookies.loggedIn && (
-            <ListItem button component={Link} to="/login">
+            <ListItem component={Link} to="/login">
               <ListItemText primary="Login" />
             </ListItem>
           )}
           {cookies.loggedIn && (
             <ListItem
-              button
+            
               onClick={() => {
                 document.cookie = cookie.serialize('loggedIn', null, {
                   maxAge: 0,

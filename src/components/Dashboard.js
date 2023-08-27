@@ -94,7 +94,7 @@ useEffect(() => {
     return totals;
   }, {});
 
-  const sortedTeams = Object.values(teamTotals).sort((a, b) => b.goals - a.goals);
+  const sortedTeams = Object.values(teamTotals).sort((a, b) => b.totalPoints - a.totalPoints);
 
 setAggregatedTeams(sortedTeams);
   }, [leaderboard]);
