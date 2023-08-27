@@ -88,7 +88,7 @@ function Home() {
           <hr></hr>
           <li>
             Select a player from the Player Pool in order to claim for your
-            roster.
+            roster by clicking the heart icon.
           </li>
           <hr></hr>
           <li>
