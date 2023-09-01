@@ -12,11 +12,16 @@ import {
   // Link,
   // Grow,
 } from "@mui/material";
+import React from 'react'
 import { useState, useEffect } from "react";
 import axios from "axios";
 // import Heart  from '../components/Heart'
 import cookie from "cookie";
 import jwtdecode from "jwt-decode";
+// import Parent from "./Parent";
+// import Roster from "./Roster";
+// import { connect } from 'react-redux'
+// import { useNavigate } from 'react-router-dom'
 
 // const handleClick = (e) => {
 //   setIsClicked(true)
@@ -25,7 +30,11 @@ import jwtdecode from "jwt-decode";
 //   setState(newState);
 // };
 
-function PlayerPool() {
+// function PlayerPool({updateRosterStats}) {
+  // function PlayerPool({ onRosterUpdate }) {
+    function PlayerPool() {
+
+  // const navigate = useNavigate()
   const cookies = cookie.parse(document.cookie);
 
   const jwtd = jwtdecode(cookies.token);
@@ -89,6 +98,8 @@ function PlayerPool() {
     setLikedPlayers((prevPlayer) => [...prevPlayer, player]);
     setIsLiked(!isLiked);
     setActive(player.player.id);
+    console.log(player.player.id)
+    // onRosterUpdate(player);
   };
 
   const getPlayers = async () => {
@@ -163,11 +174,44 @@ function PlayerPool() {
     console.log('playerPool', playerPool);
   
   },[active])
+
+
+
+//   const fetchAndApplyUpdatedStats = async () => {
+//     try {
+//       const options = {
+//         method: 'GET',
+//         url: 'https://api-football-v1.p.rapidapi.com/v3/players/topscorers',
+//         params: {
+//           league: '39',
+//           season: '2023',
+//         },
+//         headers: {
+//           'X-RapidAPI-Key': process.env.REACT_APP_API, // Replace with your API key
+//           'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com',
+//         },
+//       };
+  
+//       const response = await axios.request(options);
+//       const updatedStats = response.data.response;
+  
+//     updateRosterStats(updatedStats);
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
+
+
+
+
+  
+
   
 
   function addToRoster(player) {
     if (playerPool.length < 6) {
-        console.log(rosterCount)
+        console.log(playerPool.length)
+        
       axios
         .post(
           "https://capstone-epl.onrender.com/players/playerpool",
@@ -179,6 +223,8 @@ function PlayerPool() {
             keyPasses: player.statistics[0].passes.key,
             tackles: player.statistics[0].tackles.total,
             thumbnail: player.player.photo,
+            playerId: player.player.id,
+            
           },
           {
             headers: {
@@ -188,6 +234,8 @@ function PlayerPool() {
         )
         .then((response) => {
           console.log(response.data);
+          handleClick(player)
+    
           
           
         })
@@ -199,6 +247,7 @@ function PlayerPool() {
     }
   }
 
+  
   console.log(isLiked);
 
   return (
@@ -254,10 +303,12 @@ function PlayerPool() {
                     if (
                       playerPool.some(
                         (poolPlayer) =>
-                          poolPlayer.thumbnail === player.player.photo &&
+                          poolPlayer.thumbnail === player.player.id &&
                           poolPlayer.user_id === jwtd.id
                       )
                     ) {
+                      console.log("Duplicate check:", playerPool);
+                      console.log("Player to be added:", player.player);
                       // console.log('DUPLICATE')
                       window.alert("You already chose this player!");
                       // conditionally render modal or window alert
@@ -315,177 +366,7 @@ function PlayerPool() {
   );
 }
 
+
+
 export default PlayerPool;
 
-// "https://api-football-v1.p.rapidapi.com/v2/players/search/{lastname}"
-// get player by last name
-
-// https://api-football-v1.p.rapidapi.com/v2/topscorers/{league_id}
-// this gets the 20 best scorers from any league!
-
-// {
-//   "api": {
-//       "results": 20,
-//       "topscorers": [
-//           {
-//               "player_id": 278,
-//               "player_name": "K. Mbappé",
-//               "firstname": "Kylian",
-//               "lastname": "Mbappé Lottin",
-//               "position": "Attacker",
-//               "nationality": "France",
-//               "team_id": 85,
-//               "team_name": "Paris Saint Germain",
-//               "games": {
-//                   "appearences": 29,
-//                   "minutes_played": 2340
-//               },
-//               "goals": {
-//                   "total": 33,
-//                   "assists": 7,
-//                   "conceded": null,
-//                   "saves": 0
-//               },
-//               "shots": {
-//                   "total": 122,
-//                   "on": 68
-//               },
-//               "penalty": {
-//                   "won": 3,
-//                   "commited": null,
-//                   "success": 1,
-//                   "missed": 0,
-//                   "saved": null
-//               },
-//               "cards": {
-//                   "yellow": 5,
-//                   "second_yellow": 0,
-//                   "red": 1
-//               }
-//           },
-//           {
-//               "player_id": 3246,
-//               "player_name": "N. Pépé",
-//               "firstname": "Nicolas",
-//               "lastname": "Pépé",
-//               "position": "Attacker",
-//               "nationality": "Côte d'Ivoire",
-//               "team_id": 79,
-//               "team_name": "Lille",
-//               "games": {
-//                   "appearences": 38,
-//                   "minutes_played": 3332
-//               },
-//               "goals": {
-//                   "total": 22,
-//                   "assists": 11,
-//                   "conceded": null,
-//                   "saves": 0
-//               },
-//               "shots": {
-//                   "total": 118,
-//                   "on": 61
-//               },
-//               "penalty": {
-//                   "won": 5,
-//                   "commited": null,
-//                   "success": 9,
-//                   "missed": 1,
-//                   "saved": null
-//               },
-//               "cards": {
-//                   "yellow": 1,
-//                   "second_yellow": 0,
-//                   "red": 0
-//               }
-//           }
-//       ]
-//   }
-
-// "https://api-football-v1.p.rapidapi.com/v2/players/team/{team_id}/{season}"
-// this gets stats by team id or season
-
-// this endpoint will return
-// {
-//   "api": {
-//       "results": 3,
-//       "players": [
-//           {
-//               "player_id": 276,
-//               "player_name": "Neymar da Silva Santos Junior",
-//               "firstname": "Neymar",
-//               "lastname": "da Silva Santos Junior",
-//               "number": 10,
-//               "position": "Attacker",
-//               "age": 27,
-//               "birth_date": "05/02/1992",
-//               "birth_place": "Mogi das Cruzes",
-//               "birth_country": "Brazil",
-//               "nationality": "Brazil",
-//               "height": "175 cm",
-//               "weight": "68 kg",
-//               "injured": "False",
-//               "rating": "8.183333",
-//               "team_id": 85,
-//               "team_name": "Paris Saint Germain",
-//               "league": "UEFA Champions League",
-//               "season": "2018-2019",
-//               "captain": 0,
-//               "shots": {
-//                   "total": 24,
-//                   "on": 16
-//               },
-//               "goals": {
-//                   "total": 5,
-//                   "conceded": 0,
-//                   "assists": 2,
-//                   "saves": 0
-//               },
-//               "passes": {
-//                   "total": 262,
-//                   "key": 0,
-//                   "accuracy": 82
-//               },
-//               "tackles": {
-//                   "total": 3,
-//                   "blocks": 2,
-//                   "interceptions": 2
-//               },
-//               "duels": {
-//                   "total": 122,
-//                   "won": 72
-//               },
-//               "dribbles": {
-//                   "attempts": 54,
-//                   "success": 32
-//               },
-//               "fouls": {
-//                   "drawn": 34,
-//                   "committed": 4
-//               },
-//               "cards": {
-//                   "yellow": 2,
-//                   "yellowred": 0,
-//                   "red": 0
-//               },
-//               "penalty": {
-//                   "won": 0,
-//                   "commited": 0,
-//                   "success": 0,
-//                   "missed": 0,
-//                   "saved": 0
-//               },
-//               "games": {
-//                   "appearences": 6,
-//                   "minutes_played": 532,
-//                   "lineups": 6
-//               },
-//               "substitutes": {
-//                   "in": 0,
-//                   "out": 1,
-//                   "bench": 0
-//               }
-//           },
-//       ]
-//   }
-// }

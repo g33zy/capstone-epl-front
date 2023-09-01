@@ -2,7 +2,11 @@ import React from 'react'
 import axios from 'axios'
 import cookie from 'cookie'
 import { useState, useEffect } from 'react'
+// import PlayerPool from './PlayerPool'
+// import Parent from './Parent'
 // import { useParams } from "react-router-dom"
+// import { connect } from 'react-redux'
+
 
 import {
   Container,
@@ -24,8 +28,9 @@ import jwtdecode from 'jwt-decode'
 
 
 
-function Roster() {
+// function Roster({rosterStats}) {
 
+  function Roster() {
 
   
       const cookies = cookie.parse(document.cookie);
@@ -38,6 +43,10 @@ function Roster() {
     console.log(jwtd)
   
       const [roster, setRoster] = useState([])
+
+      // const handleRosterUpdate = (player) => {
+      //   setRoster((prevRoster) => [...prevRoster, player])
+      // }
   
       const getRoster = async () => {
         
@@ -93,12 +102,148 @@ function Roster() {
   
       console.log(roster)
 
-
+// this code updates the roster to include claimed players from the player pool, it does not update the roster stats
       const updateRoster = (id) => {
         const newRoster = roster.filter(player => player.id !== id)
         setRoster(newRoster)
       }
-  
+
+     
+      // const fetchLatestStats = async () => {
+      //   const response = await axios.get(
+      //     "https://api-football-v1.p.rapidapi.com/v3/players/topscorers",
+      //     {
+      //       params: {
+      //         league: "39",
+      //         season: "2023"
+      //       },
+      //       headers: {
+      //         "X-RapidAPI-Key": process.env.REACT_APP_API,
+      //         "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com"
+      //       }
+      //     }  
+      //   );
+        
+      //   return response.data.response;
+      // }
+    
+      // // Get initial roster data
+      // useEffect(() => {
+      //   axios.get("/roster")
+      //     .then(response => setRoster(response.data));
+      // }, []);
+    
+      // const handleUpdateStats = async () => {  
+      //   const latestStats = await fetchLatestStats();
+        
+      //   const updatedRoster = roster.map(player => {
+      //     const updatedStats = latestStats.find(stat => 
+      //       stat.player.id === player.id
+      //     );
+      //     if (updatedStats) {
+      //       return {...player, ...updatedStats};  
+      //     }
+      //     return player;
+      //   });
+        
+      //   setRoster(updatedRoster);
+      // }
+
+     // API call to get latest stats 
+// const fetchLatestStats = async () => {
+
+//   const options = {
+//     method: 'GET',
+//     url: 'https://api-football-v1.p.rapidapi.com/v3/players/topscorers',
+//     params: {
+//       league: '39',
+//       season: '2023' 
+//     },
+//     headers: {
+//       'X-RapidAPI-Key': process.env.REACT_APP_API,
+//       'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+//     }
+//   };
+
+//   const response = await axios.request(options);
+
+//   return response.data.response;
+// }
+
+// // Update roster stats
+// const fetchAndApplyUpdatedStats = async () => {
+
+//   const updatedStats = await fetchLatestStats();
+
+//   const updatedRoster = roster.map(rosterPlayer => {
+//     const updatedPlayerStats = updatedStats.find(
+//       updated => updated.player.id === rosterPlayer.id
+//     );
+    
+//     if (updatedPlayerStats) {
+//       return {...rosterPlayer, ...updatedPlayerStats};
+//     }
+    
+//     return rosterPlayer;
+//   });
+
+//   setRoster(updatedRoster);
+// }
+
+// // Call on button click
+// const handleUpdateStats = async () => {
+//   await fetchAndApplyUpdatedStats();
+// }
+
+
+      
+
+      const fetchAndApplyUpdatedStats = async () => {
+        try {
+          const options = {
+            method: 'GET',
+            url: 'https://api-football-v1.p.rapidapi.com/v3/players/topscorers',
+            params: {
+              league: '39',
+              season: '2023',
+            },
+            headers: {
+              'X-RapidAPI-Key': process.env.REACT_APP_API, // Replace with your API key
+              'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com',
+            },
+          };
+      
+          const response = await axios.request(options);
+          const updatedStats = response.data.response;
+
+          console.log(updatedStats)
+      
+          // const updatedRoster = roster.map(rosterPlayer => {
+          //   const updatedPlayerStats = updatedStats.find(updated => 
+          //     updated.player.id === rosterPlayer.id);
+          //   if (updatedPlayerStats) {
+          //     return { ...rosterPlayer, ...updatedPlayerStats };
+          //   }
+          //   return rosterPlayer;
+          // });
+      
+          // Update roster state
+          // setRoster(updatedRoster);
+        
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      
+      // Schedule the background task to run once a week (adjust as needed)
+      // useEffect(() => {
+      //   const interval = setInterval(fetchAndApplyUpdatedStats, 604800000); // One week in milliseconds
+      //   return () => clearInterval(interval);
+      // }, []);
+
+      useEffect(() => {
+        fetchAndApplyUpdatedStats();
+      }, []);
     
       return (
 
@@ -116,6 +261,9 @@ function Roster() {
                   {/* <Total /> */}
                   {/* {cookies.loggedIn ? <AddPlayers playerTotal={roster.length} /> : null} */}
               </div>
+
+              {/* <button onClick={fetchAndApplyUpdatedStats}>Update Stats</button> */}
+
               <Table>
                   <TableHead>
                       <TableRow>
@@ -167,6 +315,8 @@ function Roster() {
                   ))}
                   </TableBody>
               </Table>
+
+              {/* <PlayerPool onRosterUpdate={handleRosterUpdate} /> */}
           </Container>
       )
   }

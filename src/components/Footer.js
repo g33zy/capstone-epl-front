@@ -43,7 +43,7 @@ export default function Footer() {
               Austin, TX
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Email: test#@email.com
+              Email: stevejgaz@gmail.com
             </Typography>
             {/* <Typography variant="body2" color="text.secondary">
               Phone: +1 234 567 8901

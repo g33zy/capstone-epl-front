@@ -30,3 +30,28 @@
 
 
 // export default combineReducers({player})
+
+
+
+
+
+
+
+
+
+
+
+// reducers/rosterReducer.js
+
+// const initialState = [];
+
+// const rosterReducer = (state = initialState, action) => {
+//   switch (action.type) {
+//     case 'UPDATE_ROSTER':
+//       return action.payload;
+//     default:
+//       return state;
+//   }
+// };
+
+// export default rosterReducer;

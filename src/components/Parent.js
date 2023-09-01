@@ -1,8 +1,11 @@
-import { useEffect, useState } from 'react';
 
-import React from 'react'
-import axios from 'axios'
 
+// import { useEffect, useState } from 'react';
+
+// import React from 'react'
+// import axios from 'axios'
+// import Roster from './Roster'
+// import PlayerPool from './PlayerPool';
 
 
 
@@ -10,59 +13,23 @@ import axios from 'axios'
 
 
 // function Parent() {
+//   // State to hold roster stats
+//   const [rosterStats, setRosterStats] = useState({});
 
-
-// const [stand, setStand] = useState([])
-
-
-
-//     const options = {
-//         method: 'GET',
-//         url: 'https://api-football-v1.p.rapidapi.com/v3/standings',
-//         params: {
-//           season: '2023',
-//           league: '39'
-//         },
-//         headers: {
-//           'X-RapidAPI-Key': process.env.REACT_APP_API,
-//           'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
-//         }
-//       };
-      
-
-//       async function standings () {
-
-      
-//       try {
-//           const response = await axios.request(options);
-//           console.log(response.data);
-//           setStand(response.data.response) 
-//           console.log(response)
-
-//       } catch (error) {
-//           console.error(error);
-//       }
-
-//     }
-
-
-//     useEffect(() => {
-//         standings()
-//     }, [])
+//   // Callback function to update roster stats
+//   const updateRosterStats = (newStats) => {
+//     setRosterStats(newStats);
+//   };
 
 //   return (
-//    <div>
-//     {/* {stand.map(teams => (
-
-//     ))} */}
-
-
-//    </div>
-//   )
+//     <div>
+//       {/* Pass rosterStats and updateRosterStats as props */}
+//       <Roster rosterStats={rosterStats} fetchAndApplyUpdatedStats={fetchAndApplyUpdatedStats}/>
+//       <PlayerPool updateRosterStats={updateRosterStats} />
+//     </div>
+//   );
 // }
 
-// export default Parent
-
-
+// export default Parent;
 
 
